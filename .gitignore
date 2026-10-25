@@ -1,0 +1,21 @@
+# Compiled binaries and objects
+*.exe
+*.o
+*.obj
+*.lib
+*.dll
+*.a
+
+# Build/output folders
+build/
+bin/
+obj/
+x64/
+Debug/
+Release/
+
+# IDE files
+.vscode/
+.vs/
+*.sln
+*.vcxproj*

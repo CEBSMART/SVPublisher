@@ -1,0 +1,965 @@
+[
+    {
+        "id": "34a438ba0fa6a764",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3e92221e98791984",
+        "type": "mqtt out",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "topic": "sv/control/state",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "005672566f50ad43",
+        "x": 480,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "62f106690790dd62",
+        "type": "ui_button",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "group": "6c4f029b4fce992a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "STOP Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "STOP",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "3e92221e98791984"
+            ]
+        ]
+    },
+    {
+        "id": "3fd5906d1ccba888",
+        "type": "ui_button",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "group": "6c4f029b4fce992a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "START Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "START",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "3e92221e98791984"
+            ]
+        ]
+    },
+    {
+        "id": "7e44c51e4986475a",
+        "type": "ui_text_input",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "label": "Va",
+        "tooltip": "",
+        "group": "07b2d90db421762f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 318,
+        "y": 341.9999761581421,
+        "wires": [
+            [
+                "491a26c8fa04a7d2"
+            ]
+        ]
+    },
+    {
+        "id": "491a26c8fa04a7d2",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 8",
+        "func": "// Get the value from the incoming message\nlet va_value = msg.payload;\n\n// Save it to the Global Context\nglobal.set(\"va_rms\", va_value);\n\nnode.warn(`[GLOBAL SAVE] Va_RMS updated to: ${va_value}`);\n\n// Optional: Pass the message through to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 528,
+        "y": 341.9999761581421,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "27294d6e32cb27f7",
+        "type": "ui_text_input",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "label": "Vb",
+        "tooltip": "",
+        "group": "07b2d90db421762f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 318,
+        "y": 401.9999761581421,
+        "wires": [
+            [
+                "ce07166e2190a7b4"
+            ]
+        ]
+    },
+    {
+        "id": "ce07166e2190a7b4",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 9",
+        "func": "// Get the value from the incoming message\nlet vb_value = msg.payload;\n\n// Save it to the Global Context\nglobal.set(\"vb_rms\", vb_value);\n\n// Optional: Pass the message through to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 528,
+        "y": 401.9999761581421,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a33c770cc9d42cb4",
+        "type": "ui_text_input",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "label": "Vc",
+        "tooltip": "",
+        "group": "07b2d90db421762f",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 318,
+        "y": 461.9999761581421,
+        "wires": [
+            [
+                "a4ec2c9c079447a7"
+            ]
+        ]
+    },
+    {
+        "id": "a4ec2c9c079447a7",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 10",
+        "func": "// Get the value from the incoming message\nlet vc_value = msg.payload;\n\n// Save it to the Global Context\nglobal.set(\"vc_rms\", vc_value);\n\n// Optional: Pass the message through to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 528,
+        "y": 461.9999761581421,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4384e1d06939519a",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 11",
+        "func": "// Use the nullish coalescing operator (??) or check specifically for undefined\nlet va = global.get(\"va_rms\");\nlet vb = global.get(\"vb_rms\");\nlet vc = global.get(\"vc_rms\");\n\nlet ia = global.get(\"ia_rms\");\nlet ib = global.get(\"ib_rms\");\nlet ic = global.get(\"ic_rms\");\n\n// If the value is strictly undefined (not set yet), then use default. \n// If it is 0, it will keep 0.\nva = (typeof va !== 'undefined') ? va : 110000;\nvb = (typeof vb !== 'undefined') ? vb : 110000;\nvc = (typeof vc !== 'undefined') ? vc : 110000;\n\n\nia = (typeof ia !== 'undefined') ? ia : 1;\nib = (typeof ib !== 'undefined') ? ib : 1;\nic = (typeof ic !== 'undefined') ? ic : 1;\n\nlet msgA = { payload: va, topic: \"sv/va/rms\" };\nlet msgB = { payload: vb, topic: \"sv/vb/rms\" };\nlet msgC = { payload: vc, topic: \"sv/vc/rms\" };\n\nlet msgD = { payload: ia, topic: \"sv/ia/rms\" };\nlet msgE = { payload: ib, topic: \"sv/ib/rms\" };\nlet msgF = { payload: ic, topic: \"sv/ic/rms\" };\n\nreturn [[msgA, msgB, msgC, msgD, msgE, msgF] ];",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 457,
+        "y": 574.9999895095825,
+        "wires": [
+            [
+                "da04e1e19e9df184"
+            ]
+        ]
+    },
+    {
+        "id": "da04e1e19e9df184",
+        "type": "mqtt out",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "005672566f50ad43",
+        "x": 757,
+        "y": 574.9999895095825,
+        "wires": []
+    },
+    {
+        "id": "fcd423183b0377d2",
+        "type": "ui_button",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "group": "6c4f029b4fce992a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "INJECT",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 187,
+        "y": 574.9999895095825,
+        "wires": [
+            [
+                "4384e1d06939519a"
+            ]
+        ]
+    },
+    {
+        "id": "fa43b707b61633d6",
+        "type": "debug",
+        "z": "34a438ba0fa6a764",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "d794bbd7fc9dac18",
+        "type": "ui_text_input",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "label": "Ia",
+        "tooltip": "",
+        "group": "90308ee6b7a9a16a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 310,
+        "y": 660,
+        "wires": [
+            [
+                "b6024df433ec50a9"
+            ]
+        ]
+    },
+    {
+        "id": "b6024df433ec50a9",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 12",
+        "func": "// Get the value from the incoming message\nlet value = msg.payload;\n\n// Save it to the Global Context\nglobal.set(\"ia_rms\", value);\n\nnode.warn(`[GLOBAL SAVE] Va_RMS updated to: ${value}`);\n\n// Optional: Pass the message through to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bfe4ad0527aa9f49",
+        "type": "ui_text_input",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "label": "Ib",
+        "tooltip": "",
+        "group": "90308ee6b7a9a16a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 310,
+        "y": 720,
+        "wires": [
+            [
+                "374f8825be077db0"
+            ]
+        ]
+    },
+    {
+        "id": "374f8825be077db0",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 13",
+        "func": "// Get the value from the incoming message\nlet value = msg.payload;\n\n// Save it to the Global Context\nglobal.set(\"ib_rms\", value);\n\nnode.warn(`[GLOBAL SAVE] Va_RMS updated to: ${value}`);\n\n// Optional: Pass the message through to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "80292d2cd3690501",
+        "type": "ui_text_input",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "label": "Ic",
+        "tooltip": "",
+        "group": "90308ee6b7a9a16a",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 310,
+        "y": 780,
+        "wires": [
+            [
+                "11bc14680ea612ca"
+            ]
+        ]
+    },
+    {
+        "id": "11bc14680ea612ca",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 14",
+        "func": "// Get the value from the incoming message\nlet value = msg.payload;\n\n// Save it to the Global Context\nglobal.set(\"ic_rms\", value);\n\nnode.warn(`[GLOBAL SAVE] Va_RMS updated to: ${value}`);\n\n// Optional: Pass the message through to the next node\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2ec92818f2cfcb5d",
+        "type": "ui_text_input",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "label": "SV ID",
+        "tooltip": "",
+        "group": "195ce88bb51d7628",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "payload",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 310,
+        "y": 860,
+        "wires": [
+            [
+                "aa4d372c6c25bf5d",
+                "993d24359823e2a0"
+            ]
+        ]
+    },
+    {
+        "id": "aa4d372c6c25bf5d",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 15",
+        "func": "// Get the value from the incoming message\nlet value = msg.payload;\n\n// Save it to the Global Context\nglobal.set(\"sv_id\", value);\n\n// Optional: Pass the message through to the next node\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "088b0d39b8037e64",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 16",
+        "func": "// Use the nullish coalescing operator (??) or check specifically for undefined\nlet sv_id = global.get(\"sv_id\");\n\n\nlet msg2 = { payload: sv_id, topic: \"sv/control/svid\" };\nlet msg1 = { payload: \"STOP\", topic: \"sv/control/state\" };\nlet msg3 = { payload: \"START\", topic: \"sv/control/state\" };\n\n\n\nreturn [[msg1, msg2, msg3] ];",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 537,
+        "y": 954.9999895095825,
+        "wires": [
+            [
+                "da04e1e19e9df184"
+            ]
+        ]
+    },
+    {
+        "id": "9178f8120e87644f",
+        "type": "ui_button",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "group": "195ce88bb51d7628",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Update SV ID & Restart Stream",
+        "tooltip": "Stream will be interrupted",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 257,
+        "y": 954.9999895095825,
+        "wires": [
+            [
+                "088b0d39b8037e64"
+            ]
+        ]
+    },
+    {
+        "id": "d8b3ff9efd4b99b8",
+        "type": "inject",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "110000",
+        "payloadType": "num",
+        "x": 113,
+        "y": 403.9999885559082,
+        "wires": [
+            [
+                "7e44c51e4986475a",
+                "27294d6e32cb27f7",
+                "a33c770cc9d42cb4"
+            ]
+        ]
+    },
+    {
+        "id": "0d263505e5e02c30",
+        "type": "inject",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "90",
+        "payloadType": "num",
+        "x": 110,
+        "y": 720,
+        "wires": [
+            [
+                "d794bbd7fc9dac18",
+                "bfe4ad0527aa9f49",
+                "80292d2cd3690501"
+            ]
+        ]
+    },
+    {
+        "id": "43ab64eba2bd86a1",
+        "type": "xml",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 690,
+        "y": 1220,
+        "wires": [
+            [
+                "e95f807f6b403a7f"
+            ]
+        ]
+    },
+    {
+        "id": "e95f807f6b403a7f",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 17",
+        "func": "let results = [];\n\n// Recursive search for all SampledValueControl tags\nfunction findSV(obj) {\n    for (let key in obj) {\n        if (key === 'SampledValueControl') {\n            let controls = Array.isArray(obj[key]) ? obj[key] : [obj[key]];\n            \n            controls.forEach(sv => {\n                let cleanObj = {};\n\n                // 1. Extract all XML Attributes (name, datSet, smvID, etc.)\n                if (sv.$) {\n                    Object.assign(cleanObj, sv.$);\n                }\n\n                // 2. Extract Child Elements (IEDName, SmvOpts, etc.)\n                for (let prop in sv) {\n                    if (prop === '$') continue; // Skip attributes we already got\n                    \n                    let val = sv[prop];\n                    \n                    // If it's a simple text array like [\"Value\"], flatten it\n                    if (Array.isArray(val) && val.length === 1 && typeof val[0] === 'string') {\n                        cleanObj[prop] = val[0];\n                    } \n                    // If it's an object with attributes (like SmvOpts), grab them\n                    else if (Array.isArray(val) && val[0] && val[0].$) {\n                        cleanObj[prop] = val[0].$;\n                    }\n                    else {\n                        cleanObj[prop] = val;\n                    }\n                }\n                results.push(cleanObj);\n            });\n        } else if (typeof obj[key] === 'object' && obj[key] !== null) {\n            findSV(obj[key]);\n        }\n    }\n}\n\nfindSV(msg.payload);\nmsg.payload = results;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 1380,
+        "wires": [
+            [
+                "c39596c2118fd2fa",
+                "642eb79c18d890f9"
+            ]
+        ]
+    },
+    {
+        "id": "a233664509ed9d6b",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 18",
+        "func": "// 1. Get current buffer\nlet fileContent = context.get('fileContent') || \"\";\n\n// 2. Check the length\nlet currentLength = fileContent.length;\n\n// 3. Log it to the Debug sidebar so you can watch it grow with each chunk\n//node.warn(\"Current buffer size: \" + currentLength + \" characters\");\n\n// 2. Identify where the message came from\n// If it has a payload and it's a chunk of data:\nif (msg.topic !== \"RELEASE_FILE\") {\n    fileContent += msg.payload.toString();\n    context.set('fileContent', fileContent);\n    \n\n\n    // If the Global is already 1, we can proceed, \n    // otherwise wait for the next chunk or the manual trigger.\n    if (global.get('upload_complete') !== 1) {\n        return null; \n    }\n}\n\n// 3. If we are here, either the Global just hit 1 \n// OR a manual \"Done\" message arrived (topic: TRIGGER_DONE)\nmsg.payload = fileContent;\n\n// 4. Cleanup\ncontext.set('fileContent', \"\");\nglobal.set('upload_complete', 0);\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 1140,
+        "wires": [
+            [
+                "43ab64eba2bd86a1",
+                "fcf53bbe4487c7a6"
+            ]
+        ]
+    },
+    {
+        "id": "102cde444570f305",
+        "type": "ui_upload",
+        "z": "34a438ba0fa6a764",
+        "group": "81e3740a1e2dd0aa",
+        "title": "upload",
+        "accept": ".scd",
+        "name": "",
+        "order": 3,
+        "width": "6",
+        "height": "4",
+        "chunk": 256,
+        "transfer": "text",
+        "x": 170,
+        "y": 1140,
+        "wires": [
+            [
+                "a233664509ed9d6b",
+                "e3253a17b4b97d69"
+            ]
+        ]
+    },
+    {
+        "id": "e3253a17b4b97d69",
+        "type": "stoptimer",
+        "z": "34a438ba0fa6a764",
+        "duration": "1",
+        "units": "Second",
+        "payloadtype": "bool",
+        "payloadval": "true",
+        "name": "",
+        "x": 280,
+        "y": 1280,
+        "wires": [
+            [],
+            [
+                "71bf9e679b0d9de6"
+            ]
+        ]
+    },
+    {
+        "id": "71bf9e679b0d9de6",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 19",
+        "func": "\n// 2. Add the trigger topic\n// This tells the next Function node: \"Stop buffering and send the file!\"\nmsg.topic = \"RELEASE_FILE\";\n\n// 3. Optional: Clear the payload so it doesn't get mixed with SCL data\nmsg.payload = true; \n\n// 4. Send this message into the same input as your file chunks\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 1280,
+        "wires": [
+            [
+                "a233664509ed9d6b"
+            ]
+        ]
+    },
+    {
+        "id": "d83821b70aa67f48",
+        "type": "ui_spinner",
+        "z": "34a438ba0fa6a764",
+        "group": "81e3740a1e2dd0aa",
+        "order": 1,
+        "width": -1,
+        "height": 0,
+        "name": "",
+        "kind": "wave",
+        "overlay": true,
+        "color": "#3fadb5",
+        "spinSize": 50,
+        "x": 1040,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "fcf53bbe4487c7a6",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 20",
+        "func": "let pl = true; \nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 1140,
+        "wires": [
+            [
+                "d83821b70aa67f48"
+            ]
+        ]
+    },
+    {
+        "id": "c39596c2118fd2fa",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 21",
+        "func": "let pl = false; \nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 1220,
+        "wires": [
+            [
+                "d83821b70aa67f48"
+            ]
+        ]
+    },
+    {
+        "id": "e92dc4105a8fc191",
+        "type": "smart_table_ic_v2",
+        "z": "34a438ba0fa6a764",
+        "group": "fb6f074093ceff6d",
+        "name": "",
+        "order": 0,
+        "width": "12",
+        "height": "4",
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "customCellFormatter": "",
+        "x": 1130,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "642eb79c18d890f9",
+        "type": "function",
+        "z": "34a438ba0fa6a764",
+        "name": "function 22",
+        "func": "if (Array.isArray(msg.payload)) {\n    msg.payload = msg.payload.map(row => {\n        // Remove the columns you don't want to see\n        delete row.IEDName;\n        delete row.SmvOpts;\n        \n        // Return the remaining properties (name, datSet, smvID, etc.)\n        return row;\n    });\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 1420,
+        "wires": [
+            [
+                "e92dc4105a8fc191",
+                "fa43b707b61633d6"
+            ]
+        ]
+    },
+    {
+        "id": "feb86c58ef03080e",
+        "type": "inject",
+        "z": "34a438ba0fa6a764",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 170,
+        "y": 1480,
+        "wires": [
+            [
+                "e92dc4105a8fc191"
+            ]
+        ]
+    },
+    {
+        "id": "993d24359823e2a0",
+        "type": "debug",
+        "z": "34a438ba0fa6a764",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "44f5022eb5de8349",
+        "type": "ui_spacer",
+        "z": "34a438ba0fa6a764",
+        "name": "spacer",
+        "group": "195ce88bb51d7628",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "005672566f50ad43",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "6c4f029b4fce992a",
+        "type": "ui_group",
+        "name": "Control",
+        "tab": "afbd266f68709c52",
+        "order": 4,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "07b2d90db421762f",
+        "type": "ui_group",
+        "name": "Primary Voltages ( L-E )",
+        "tab": "afbd266f68709c52",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "90308ee6b7a9a16a",
+        "type": "ui_group",
+        "name": "Primary Currents",
+        "tab": "afbd266f68709c52",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "195ce88bb51d7628",
+        "type": "ui_group",
+        "name": "General",
+        "tab": "ef956e33a18d9b14",
+        "order": 5,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "81e3740a1e2dd0aa",
+        "type": "ui_group",
+        "name": "Upload SCD File",
+        "tab": "ef956e33a18d9b14",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fb6f074093ceff6d",
+        "type": "ui_group",
+        "name": "SV Streams",
+        "tab": "ef956e33a18d9b14",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "afbd266f68709c52",
+        "type": "ui_tab",
+        "name": "Sampled Values Control",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ef956e33a18d9b14",
+        "type": "ui_tab",
+        "name": "SV Stream Properties Config",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]
